@@ -1,0 +1,26 @@
+<div *ngIf="project">
+    <a [routerLink]="['/projects']">Go Back</a>
+    <br>
+    <h2 class="page-header"><strong>{{project.title}}</strong></h2>
+    <h2><small>{{project.description}}</small></h2>
+    <br>
+    <div class="row">
+        <div class="col-md-8">
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Title: </strong>{{project.title}}</li> 
+                <li class="list-group-item"><strong>Description: </strong>{{project.description}}</li>   
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h3><strong>Actions:</strong></h3>
+            <a class="btn btn-default" [routerLink]="['/edit-project/'+project.$key]">Edit Project</a>
+            <a class="btn btn-default">Add User</a> 
+            <br>
+            <br>
+            <a class="btn btn-success">New Task</a>
+            <br>
+            <br>
+            <a (click)="onDeleteClick()" class="btn btn-danger">Delete Project</a>
+        </div>
+    </div>
+</div>
