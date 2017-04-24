@@ -1,7 +1,7 @@
 # Projectmanagement
 
 ## A small Web-App for organizing a project with tasks.
-Build by @Phil96 and @GrafHeinrich for a study assignment concerning [Angular](https://angular.io/) and [Firebase](https://firebase.google.com/).
+Build by [@Phil96](https://github.com/Phil96) and [@GrafHeinrich](https://github.com/GrafHeinrich) for a study assignment concerning [Angular](https://angular.io/) and [Firebase](https://firebase.google.com/).
 
 ## Current Functionalities:
 * :white_check_mark: `Adding` a Project and:
