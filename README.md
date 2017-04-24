@@ -8,7 +8,7 @@ Build by [@Phil96](https://github.com/Phil96) and [@GrafHeinrich](https://github
     * give it a name
     * give it a description
 * :white_check_mark: `Editing` an existing project
-* :white_check_mark: `Delete` an existing project
+* :white_check_mark: `Deleting` an existing project
 
 ## What's to come?
 * Creating Tasks and add them to projects
