@@ -13,5 +13,3 @@ Build by [@Phil96](https://github.com/Phil96) and [@GrafHeinrich](https://github
 ## What's to come?
 * Creating Tasks and add them to projects
 * Adding Users to your Project
-
-blablabla
