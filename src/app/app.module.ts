@@ -14,12 +14,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProjectComponent } from './components/project/project.component';
 import { AddProjectComponent } from './components/add-project/add-project.component';
 import { EditProjectComponent } from './components/edit-project/edit-project.component';
-<<<<<<< HEAD
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-=======
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
->>>>>>> 5055d2315dfb6f6244126845a955bddd4239b6f5
 
 export const firebaseConfig = {
     apiKey: "AIzaSyD2PcodrDEjckQBJZuv8JxA0HGVeJ6MqCI",
@@ -56,12 +53,9 @@ const appRoutes: Routes = [
     ProjectComponent,
     AddProjectComponent,
     EditProjectComponent,
-<<<<<<< HEAD
-    DashboardComponent
-=======
+    DashboardComponent,
     AddTaskComponent,
     EditTaskComponent
->>>>>>> 5055d2315dfb6f6244126845a955bddd4239b6f5
   ],
   imports: [
     BrowserModule,
