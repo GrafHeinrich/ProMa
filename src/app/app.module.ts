@@ -18,6 +18,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
 
+
 export const firebaseConfig = {
     apiKey: "AIzaSyD2PcodrDEjckQBJZuv8JxA0HGVeJ6MqCI",
     authDomain: "projectmanagement-b6bf1.firebaseapp.com",
