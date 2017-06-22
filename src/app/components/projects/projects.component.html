@@ -1,5 +1,5 @@
 <ul class="list-group">
-  <h2 class="page-header"><strong>You are working on the following projects:</strong></h2>
+  <h2 class="page-header"><strong>Open projects:</strong></h2>
   <li class="list-group-item" *ngFor="let project of projects">
     <a [routerLink]="['/project/'+project.$key]">{{project.title}}</a>
   </li>

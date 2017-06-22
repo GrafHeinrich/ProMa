@@ -6,10 +6,23 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 export class FirebaseService {
    projects: FirebaseListObservable<any[]>;
    project: FirebaseObjectObservable<any>;
+   tasks: FirebaseListObservable<any[]>;
+   task: FirebaseObjectObservable<any>;
 
   constructor(private af: AngularFire) {
      this.projects = this.af.database.list('/projects') as FirebaseListObservable<Project[]>
+     this.tasks = this.af.database.list('/tasks') as FirebaseListObservable<Task[]>
    }
+  
+  getTasks(){return this.tasks;}
+  getTaskDetails(id,key){
+    this.task = this.af.database.object('/projects/'+id+'/tasks/'+key) as FirebaseObjectObservable<Project>
+    return this.task;
+  }
+  addTask(task) {
+    return this.tasks.push(task);
+  }
+ 
 
   getProjects() {
     return this.projects;
@@ -24,6 +37,7 @@ export class FirebaseService {
     return this.projects.push(project);
   }
 
+
   updateProject(id, project) {
     return this.projects.update(id, project);
   }
@@ -33,7 +47,12 @@ export class FirebaseService {
   }
 
 }
-
+interface Task {
+  title?: string;
+  type?: string;
+  description?: string;
+  workers?: string;
+}
 interface Project {
   $key?: string;
   title?: string;
@@ -44,6 +63,7 @@ interface Project {
       id?: string;
       description?: string;
       type?: string;
+      workers?: string;
     }
   }
 

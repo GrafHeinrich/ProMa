@@ -1,7 +1,7 @@
 <ul class="list-group">
   <h2 class="page-header"><strong>You are working on the following projects:</strong></h2>
   <ng-container *ngFor="let project of projects">
-  <li class="list-group-item" *ngIf="project.priority=='high'">
+  <li class="list-group-item" *ngIf="project.priority=='high'" style="width: 30%;float: left;">
       <a [routerLink]="['/project/'+project.$key]">{{project.title}}</a>
   </li>
   </ng-container>

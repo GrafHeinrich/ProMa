@@ -8,7 +8,13 @@
         <div class="col-md-8">
             <ul class="list-group">
                 <li class="list-group-item"><strong>Title: </strong>{{project.title}}</li> 
-                <li class="list-group-item"><strong>Description: </strong>{{project.description}}</li>   
+                <li class="list-group-item"><strong>Description: </strong>{{project.description}}</li> 
+
+                <ul *ngFor="let key of keys">
+                <li class="list-group-item" ><strong>Tasks: </strong>{{}}</li> 
+                </ul>
+              
+                
             </ul>
         </div>
         <div class="col-md-4">
@@ -17,7 +23,7 @@
             <a class="btn btn-default">Add User</a> 
             <br>
             <br>
-            <a class="btn btn-success">New Task</a>
+            <a class="btn btn-success" [routerLink]="['/add-task']">New Task</a>
             <br>
             <br>
             <a (click)="onDeleteClick()" class="btn btn-danger">Delete Project</a>
