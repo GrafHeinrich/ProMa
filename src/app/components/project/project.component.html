@@ -10,10 +10,10 @@
                 <li class="list-group-item"><strong>Title: </strong>{{project.title}}</li> 
                 <li class="list-group-item"><strong>Description: </strong>{{project.description}}</li>      
             </ul>
-
-            <li class="list-group-item" *ngFor="let task of tasks">
-                <a *ngIf="task.pro_key == project.$key">{{task.title}}</a>
-            </li>
+            <h3 class="page-header"><strong>Tasks in this Project:</strong></h3>
+            <div class="list-group-item" *ngFor="let task of tasks">
+                <a *ngIf="task.pro_key == project.$key" [routerLink]="['/task/'+task.$key]">{{task.title}}</a>
+            </div>
         </div>
         <div class="col-md-4">
             <h3><strong>Actions:</strong></h3>

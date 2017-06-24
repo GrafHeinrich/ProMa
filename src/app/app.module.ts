@@ -17,6 +17,8 @@ import { EditProjectComponent } from './components/edit-project/edit-project.com
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
+import { TaskComponent } from './components/task/task.component';
+import { TasksComponent } from './components/tasks/tasks.component';
 
 
 export const firebaseConfig = {
@@ -42,7 +44,9 @@ const appRoutes: Routes = [
   {path: 'edit-project/:id', component:EditProjectComponent},
   {path: 'add-task', component:AddTaskComponent},
   {path: 'edit-task/:id', component:EditTaskComponent},
-  {path: 'project/:id', component:ProjectComponent}
+  {path: 'project/:id', component:ProjectComponent},
+  {path: 'tasks', component:TasksComponent},
+  {path: 'task/:id', component:TaskComponent}
 ]
 
 @NgModule({
@@ -56,7 +60,9 @@ const appRoutes: Routes = [
     EditProjectComponent,
     DashboardComponent,
     AddTaskComponent,
-    EditTaskComponent
+    EditTaskComponent,
+    TaskComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
-// import * as firebase from 'firebase';
+import * as firebase from 'firebase';
 
 @Injectable()
 export class FirebaseService {
@@ -19,12 +19,16 @@ export class FirebaseService {
   }
 
   getTaskDetails(id){
-    this.task = this.af.database.object('/tasks/'+id) as FirebaseObjectObservable<Project>
+    this.task = this.af.database.object('/tasks/'+id) as FirebaseObjectObservable<Task>
     return this.task;
   }
 
   addTask(task) {
     return this.tasks.push(task);
+  }
+
+  deleteTask(id) {
+    return this.tasks.remove(id);
   }
  
 
@@ -55,6 +59,7 @@ interface Task {
   $key?: string;
   title?: string;
   type?: string;
+  pro_key?: string;
   description?: string;
   workers?: string;
 }
@@ -63,14 +68,5 @@ interface Project {
   $key?: string;
   title?: string;
   description?: string;
-  tasks?: {
-    task?: {
-      title?: string;
-      id?: string;
-      description?: string;
-      type?: string;
-      workers?: string;
-    }
-  }
 
 }
