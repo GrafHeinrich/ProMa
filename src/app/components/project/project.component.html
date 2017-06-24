@@ -8,7 +8,8 @@
         <div class="col-md-8">
             <ul class="list-group">
                 <li class="list-group-item"><strong>Title: </strong>{{project.title}}</li> 
-                <li class="list-group-item"><strong>Description: </strong>{{project.description}}</li>      
+                <li class="list-group-item"><strong>Description: </strong>{{project.description}}</li>
+                <li class="list-group-item"><strong>Priority: </strong>{{project.priority}}</li>       
             </ul>
             <h3 class="page-header"><strong>Tasks in this Project:</strong></h3>
             <div class="list-group-item" *ngFor="let task of tasks">

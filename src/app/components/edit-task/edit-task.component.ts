@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FirebaseService} from '../../services/firebase.service';
+import {Router, ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-edit-task',
@@ -7,9 +9,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditTaskComponent implements OnInit {
 
-  constructor() { }
+  id;
+  title;
+  description;
+  priority;
+
+  constructor(
+    private firebaseService:FirebaseService,
+    private router:Router,
+    private route:ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.id = this.route.snapshot.params['id'];
+
+    this.firebaseService.getTaskDetails(this.id).subscribe(task => {
+      this.title = task.title;
+      this.description = task.description;
+      this.priority = task.priority;
+    });
+  }
+
+  onEditSubmit() {
+    let task = {
+      title: this.title,
+      description: this.description,
+      priority: this.priority
+    }
+
+    this.firebaseService.updateTask(this.id, task);
+
+    this.router.navigate(['/projects']);
   }
 
 }

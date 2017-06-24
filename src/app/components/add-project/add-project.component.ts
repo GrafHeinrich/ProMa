@@ -24,10 +24,6 @@ export class AddProjectComponent implements OnInit {
     let project = {
       title: this.title,
       description: this.description,
-    /*  tasks:{
-        task1:{title:"test",
-        description:"test_desc"}
-      }*/
     }
 
     this.firebaseService.addProject(project);

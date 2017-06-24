@@ -8,16 +8,14 @@
         <div class="col-md-8">
             <ul class="list-group">
                 <li class="list-group-item"><strong>Title: </strong>{{task.title}}</li> 
-                <li class="list-group-item"><strong>Description: </strong>{{task.description}}</li>      
+                <li class="list-group-item"><strong>Description: </strong>{{task.description}}</li>
+                <li class="list-group-item"><strong>Priority: </strong>{{task.priority}}</li>           
             </ul>
         </div>
         <div class="col-md-4">
             <h3><strong>Actions:</strong></h3>
             <a class="btn btn-default" [routerLink]="['/edit-task/'+task.$key]">Edit Task</a>
             <a class="btn btn-default">Add User</a>
-            <br>
-            <br>
-            <a class="btn btn-success" [routerLink]="['/add-task']">New Task</a>
             <br>
             <br>
             <a (click)="onDeleteClick()" class="btn btn-danger">Delete Task</a>

@@ -27,6 +27,10 @@ export class FirebaseService {
     return this.tasks.push(task);
   }
 
+  updateTask(id, task) {
+    return this.tasks.update(id, task);
+  }
+
   deleteTask(id) {
     return this.tasks.remove(id);
   }

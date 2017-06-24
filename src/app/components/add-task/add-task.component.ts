@@ -8,37 +8,23 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent implements OnInit {
-   id;
-   pro_key:any;
   title: any;
   description: any;
-   t_title: any;
-  t_description: any;
-  tasks;
-  priority;
+  pro_key: any;
 
   constructor(
     private firebaseService:FirebaseService,
-    private router:Router,
-    private route:ActivatedRoute
+    private router:Router
   ) { }
 
   ngOnInit() {
-      this.id = this.route.snapshot.params['id'];
-
-      this.firebaseService.getProjectDetails(this.id).subscribe(project => {
-      this.title = project.title;
-      this.description = project.description;
-      this.priority = project.priority;
-    });
   }
 
-  onAddSubmit() {
+  onAddSubmit(key) {
     let task = {
-      title: this.t_title,
-      description: this.t_description,
-    
-      
+      title: this.title,
+      description: this.description,
+      pro_key: key,
     }
 
     this.firebaseService.addTask(task);
