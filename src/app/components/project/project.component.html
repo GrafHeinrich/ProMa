@@ -8,19 +8,17 @@
         <div class="col-md-8">
             <ul class="list-group">
                 <li class="list-group-item"><strong>Title: </strong>{{project.title}}</li> 
-                <li class="list-group-item"><strong>Description: </strong>{{project.description}}</li> 
-
-                <ul *ngFor="let key of keys">
-                <li class="list-group-item" ><strong>Tasks: </strong>{{}}</li> 
-                </ul>
-              
-                
+                <li class="list-group-item"><strong>Description: </strong>{{project.description}}</li>      
             </ul>
+
+            <li class="list-group-item" *ngFor="let task of tasks">
+                <a *ngIf="task.pro_key == project.$key">{{task.title}}</a>
+            </li>
         </div>
         <div class="col-md-4">
             <h3><strong>Actions:</strong></h3>
             <a class="btn btn-default" [routerLink]="['/edit-project/'+project.$key]">Edit Project</a>
-            <a class="btn btn-default">Add User</a> 
+            <a class="btn btn-default">Add User</a>
             <br>
             <br>
             <a class="btn btn-success" [routerLink]="['/add-task']">New Task</a>

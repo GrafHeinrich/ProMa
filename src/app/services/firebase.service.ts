@@ -14,11 +14,15 @@ export class FirebaseService {
      this.tasks = this.af.database.list('/tasks') as FirebaseListObservable<Task[]>
    }
   
-  getTasks(){return this.tasks;}
-  getTaskDetails(id,key){
-    this.task = this.af.database.object('/projects/'+id+'/tasks/'+key) as FirebaseObjectObservable<Project>
+  getTasks(){
+    return this.tasks;
+  }
+
+  getTaskDetails(id){
+    this.task = this.af.database.object('/tasks/'+id) as FirebaseObjectObservable<Project>
     return this.task;
   }
+
   addTask(task) {
     return this.tasks.push(task);
   }
@@ -37,7 +41,6 @@ export class FirebaseService {
     return this.projects.push(project);
   }
 
-
   updateProject(id, project) {
     return this.projects.update(id, project);
   }
@@ -47,12 +50,15 @@ export class FirebaseService {
   }
 
 }
+
 interface Task {
+  $key?: string;
   title?: string;
   type?: string;
   description?: string;
   workers?: string;
 }
+
 interface Project {
   $key?: string;
   title?: string;
@@ -67,11 +73,4 @@ interface Project {
     }
   }
 
-  users?: {
-    user?: {
-      name?: string;
-      mail?: string;
-      profession?: string;
-    }
-  }
 }

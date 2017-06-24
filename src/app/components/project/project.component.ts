@@ -7,13 +7,12 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.css']
 })
+
 export class ProjectComponent implements OnInit {
   id: any;
   project: any;
-  tasks:any;
-  task:any;
-  key1:any;
-  keys:any;
+  tasks: any;
+
   constructor(
     private firebaseService: FirebaseService,
     private router: Router,
@@ -26,32 +25,12 @@ export class ProjectComponent implements OnInit {
     
     this.firebaseService.getProjectDetails(this.id).subscribe(project => {
     this.project = project;
-    this.tasks = this.project.tasks;
-      //console.log(project);
+  });
+  
+  this.firebaseService.getTasks().subscribe(tasks => {
+      //console.log(projects);
+      this.tasks = tasks;
     });
-
-     this.keys = Object.keys(this.tasks);
-     this.key1 = <any>this.keys[0].toString();
-
-
-    //this.tasks = this.project.tasks;
-    console.log();
-
-    /*this.tasks = this.firebaseService.getTasks();
-   
-    this.firebaseService.getTaskDetails(this.id).subscribe(task => {
-    this.task = task;
-    
-     // console.log(task);
-    });
-    for(var i=0; i<this.tasks.length;i++){
-      console.log(this.task);
-      if(this.task.pro_key==this.id){
-        this.task = this.tasks[i];
-      }
-
-    }
-    console.log(this.task);*/
   }
   
   onDeleteClick() {
