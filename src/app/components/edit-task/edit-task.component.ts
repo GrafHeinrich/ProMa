@@ -12,6 +12,7 @@ export class EditTaskComponent implements OnInit {
   id;
   title;
   description;
+  type;
   priority;
 
   constructor(
@@ -26,6 +27,7 @@ export class EditTaskComponent implements OnInit {
     this.firebaseService.getTaskDetails(this.id).subscribe(task => {
       this.title = task.title;
       this.description = task.description;
+      this.type = task.type;
       this.priority = task.priority;
     });
   }
@@ -34,6 +36,7 @@ export class EditTaskComponent implements OnInit {
     let task = {
       title: this.title,
       description: this.description,
+      type: this.type,
       priority: this.priority
     }
 

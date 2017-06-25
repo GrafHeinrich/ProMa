@@ -10,7 +10,6 @@ import {Router} from '@angular/router';
 export class AddProjectComponent implements OnInit {
   title: any;
   description: any;
-  tasks;
 
   constructor(
     private firebaseService:FirebaseService,

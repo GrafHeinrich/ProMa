@@ -65,7 +65,6 @@ interface Task {
   type?: string;
   pro_key?: string;
   description?: string;
-  workers?: string;
 }
 
 interface Project {
