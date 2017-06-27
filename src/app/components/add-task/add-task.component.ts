@@ -10,7 +10,6 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 export class AddTaskComponent implements OnInit {
   title: any;
   description: any;
-  type: any;
   pro_key: any;
 
   constructor(
@@ -19,18 +18,18 @@ export class AddTaskComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
   }
 
-  onAddSubmit() {
+  onAddSubmit(key) {
     let task = {
       title: this.title,
       description: this.description,
-      type: this.type,
-      //pro_key: key,
+      pro_key: key
     }
 
     this.firebaseService.addTask(task);
 
-    this.router.navigate(['projects']);
+    this.router.navigate(['tasks']);
   }
 }

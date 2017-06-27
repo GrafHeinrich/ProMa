@@ -1,19 +1,15 @@
-<a [routerLink]="['/projects']">Back</a>
+<a [routerLink]="['/tasks']">Back</a>
 <br>
-<h2 class="page-header">Edit Project</h2>
+<h2 class="page-header">Create new Task</h2>
 
-<form (submit)="onAddSubmit()">
+<form (submit)="onAddSubmit(project.$key)">
   <div class="form-group">
     <label>Title</label>
-    <input class="form-control" type="text" [(ngModel)]="t_title" name="t_title" required>
+    <input class="form-control" type="text" [(ngModel)]="title" name="title" required>
   </div>
   <div class="form-group">
     <label>Description</label>
-    <input class="form-control" type="text" [(ngModel)]="t_description" name="t_description" required>
-  </div>
-  <div class="form-group">
-    <label>Type</label>
-    <input class="form-control" type="text" [(ngModel)]="t_type" name="t_type" required>
+    <input class="form-control" type="text" [(ngModel)]="description" name="description" required>
   </div>
   <input type="submit" value="Submit" class="btn btn-success">
 </form>

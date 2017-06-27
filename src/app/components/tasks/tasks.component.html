@@ -1,3 +1,13 @@
-<p>
-  tasks works!
-</p>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let task of tasks">
+    <a [routerLink]="['/task/'+task.$key]">{{task.title}}</a>
+  </li>
+</ul>
+
+<!--
+<ng-container *ngFor="let task of tasks">
+  <li class="list-group-item" *ngIf="project.$key == task.pro_key">
+      <a [routerLink]="['/task/'+task.$key]">{{task.title}}</a>
+  </li>
+</ng-container>
+-->

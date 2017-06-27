@@ -14,12 +14,13 @@
         <li><a [routerLink]="['/']">Home</a></li>
         <li *ngIf="(af.auth | async)"><a [routerLink]="['/dashboard']">Dashboard</a></li>
         <li *ngIf="(af.auth | async)"><a [routerLink]="['/projects']">Projects</a></li>
+        <!-- <li *ngIf="(af.auth | async)"><a [routerLink]="['/tasks']">All Tasks</a></li> -->
         <li *ngIf="(af.auth | async)"><a [routerLink]="['/add-project']">New Project</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!(af.auth | async)"><a (click)="login()">Login</a></li>
         <li *ngIf="(af.auth | async)"><a (click)="logout()">Logout</a></li>
       </ul>
-    </div><!--/.nav-collapse -->
+    </div>
   </div>
 </nav>
