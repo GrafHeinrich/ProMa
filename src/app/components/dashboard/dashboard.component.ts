@@ -21,12 +21,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.user = firebase.auth().currentUser;
-    console.log(this.user.displayName);
-     this.firebaseService.getProjects().subscribe(projects => {
-      //console.log(projects);
-      this.projects = projects;
-      
-
+    //console.log(this.user.displayName);
+    this.firebaseService.getProjects().subscribe(projects => {
+    //console.log(projects);
+    this.projects = projects;
     });
   }
 

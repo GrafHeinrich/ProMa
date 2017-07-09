@@ -1,18 +1,18 @@
-<ul class="list-group">
-  <h1>Welcome {{user.displayName}}</h1>
-  <h2 class="page-header"><strong>You are working on the following projects:</strong></h2>
-  <ng-container *ngFor="let project of projects">
-  <li class="list-group-item" *ngIf="project.priority=='high'" style="width: 30%;float: left;">
+<h1 *ngIf="user">Welcome {{user.displayName}}</h1>
+<h2 class="page-header"><strong>You are working on the following projects:</strong></h2>
+
+<div class="row">
+  <div *ngFor="let project of projects" class="col-md-6">
     
-    <div class="panel panel-primary">
+    <div class="panel panel-primary" *ngIf="project.priority=='high'">
       <div class="panel-heading">
-        <h3 class="panel-title"> <a [routerLink]="['/project/'+project.$key]"> <strong> {{project.title}} </strong> </a> </h3>
+        <h3 class="panel-title"><a [routerLink]="['/project/'+project.$key]"><strong> {{project.title}} </strong></a></h3>
       </div>
       <div class="panel-body">
         {{project.description}}
       </div>
     </div>
-     
-  </li>
-  </ng-container>
-</ul>
+    
+  </div>
+
+</div>
