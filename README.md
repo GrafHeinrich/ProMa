@@ -4,12 +4,18 @@
 Build by [@Phil96](https://github.com/Phil96) and [@GrafHeinrich](https://github.com/GrafHeinrich) for a study assignment concerning [Angular](https://angular.io/) and [Firebase](https://firebase.google.com/).
 
 ## Current Functionalities:
-* :white_check_mark: `Adding` a Project and:
+* :white_check_mark: `Creating` a Project and
     * give it a name
     * give it a description
+    * give it a priority
+* :white_check_mark: high prioritized projects can be accessed through the `Dashboard` 
 * :white_check_mark: `Editing` an existing project
 * :white_check_mark: `Deleting` an existing project
+* :white_check_mark: `Creating` Tasks and add them to projects
+    * give task a title
+    * give tasks a description
+    * give tasks a type
 
 ## What's to come?
-* Creating Tasks and add them to projects
-* Adding Users to your Project
+* Adding Users to your Project and
+    * assign them to projects and tasks
