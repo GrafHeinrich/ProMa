@@ -13,9 +13,7 @@ export class AddTaskComponent implements OnInit {
   title: any;
   description: any;
   type: any;
-  
   projects:any ;
- // pro_key: any;
 
 
   constructor(
@@ -32,16 +30,14 @@ export class AddTaskComponent implements OnInit {
   }
 
   onAddSubmit() {
-    console.log("test1");
     let task = {
       title: this.title,
       description: this.description,
       type: this.type,
       project: this.project,
-      //pro_key: key,
 
     }
-    console.log("test");
+
     this.firebaseService.addTask(task);
 
     this.router.navigate(['tasks']);

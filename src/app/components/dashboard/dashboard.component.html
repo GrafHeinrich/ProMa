@@ -2,7 +2,16 @@
   <h2 class="page-header"><strong>You are working on the following projects:</strong></h2>
   <ng-container *ngFor="let project of projects">
   <li class="list-group-item" *ngIf="project.priority=='high'" style="width: 30%;float: left;">
-      <a [routerLink]="['/project/'+project.$key]">{{project.title}}</a>
+    
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title"> <a [routerLink]="['/project/'+project.$key]"> <strong> {{project.title}} </strong> </a> </h3>
+      </div>
+      <div class="panel-body">
+        {{project.description}}
+      </div>
+    </div>
+     
   </li>
   </ng-container>
 </ul>

@@ -1,15 +1,26 @@
 <div *ngIf="project">
     <a [routerLink]="['/projects']">Go Back</a>
     <br>
-    <h2 class="page-header"><strong>{{project.title}}</strong></h2>
-    <h2><small>{{project.description}}</small></h2>
+    <div class="row">
+        <div class="col-md-8">
+            <br>
+            <h2><strong>{{project.title}}</strong></h2>
+        </div>
+        <div class="col-md-2">
+            <br>
+            <div class="well">
+                <strong> Priority: {{project.priority}} </strong>
+            </div>
+        </div>
+    </div>
+        <h2><small>{{project.description}}</small></h2>
     <br>
     <div class="row">
         <div class="col-md-8">
             <ul class="list-group">
-                <li class="list-group-item"><strong>Title: </strong>{{project.title}}</li> 
+                <!-- <li class="list-group-item"><strong>Title: </strong>{{project.title}}</li> 
                 <li class="list-group-item"><strong>Description: </strong>{{project.description}}</li>
-                <li class="list-group-item"><strong>Priority: </strong>{{project.priority}}</li>       
+                <li class="list-group-item"><strong>Priority: </strong>{{project.priority}}</li> -->   
             </ul>
             <h3 class="page-header"><strong>Tasks in this Project:</strong></h3>
 
@@ -26,7 +37,7 @@
             <a class="btn btn-default">Add User</a>
             <br>
             <br>
-            <a class="btn btn-success" [routerLink]="['/add-task/'+project.$key]">New Task</a>
+            <a class="btn btn-success" [routerLink]="['/add-task']">New Task</a>
             <br>
             <br>
             <a (click)="onDeleteClick()" class="btn btn-danger">Delete Project</a>
