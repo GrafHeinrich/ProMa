@@ -12,7 +12,9 @@ export class HomeComponent implements OnInit {
   constructor(
     public af:AngularFire,
     public flashMessage:FlashMessagesService
-  ) { }
+  ) { 
+    this.af.auth.subscribe;
+  }
 
   ngOnInit() {
   }

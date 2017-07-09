@@ -12,7 +12,13 @@
                 <li class="list-group-item"><strong>Priority: </strong>{{project.priority}}</li>       
             </ul>
             <h3 class="page-header"><strong>Tasks in this Project:</strong></h3>
-                <app-tasks></app-tasks>
+
+            <ng-container *ngFor="let task of tasks">
+                <li class="list-group-item" *ngIf="task.project == project.title">
+                    <a [routerLink]="['/task/'+task.$key]">{{task.title}}</a>
+                </li>
+            </ng-container>
+
         </div>
         <div class="col-md-4">
             <h3><strong>Actions:</strong></h3>
