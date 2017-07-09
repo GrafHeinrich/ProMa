@@ -15,6 +15,8 @@ Build by [@Phil96](https://github.com/Phil96) and [@GrafHeinrich](https://github
     * give task a title
     * give tasks a description
     * give tasks a type
+* :white_check_mark: `Editing` an existing task
+* :white_check_mark: `Deleting` an existing task
 
 ## What's to come?
 * Adding Users to your Project and
