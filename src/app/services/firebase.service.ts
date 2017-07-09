@@ -8,10 +8,13 @@ export class FirebaseService {
    project: FirebaseObjectObservable<any>;
    tasks: FirebaseListObservable<any[]>;
    task: FirebaseObjectObservable<any>;
+   users: FirebaseListObservable<any[]>;
+   user: FirebaseObjectObservable<any>;
 
   constructor(private af: AngularFire) {
      this.projects = this.af.database.list('/projects') as FirebaseListObservable<Project[]>
      this.tasks = this.af.database.list('/tasks') as FirebaseListObservable<Task[]>
+     this.users = this.af.database.list('/users') as FirebaseListObservable<User[]>
    }
   
   getTasks(){
@@ -62,13 +65,21 @@ export class FirebaseService {
 interface Task {
   $key?: string;
   title?: string;
+<<<<<<< HEAD
   type?: string;
+=======
+>>>>>>> e4666b86ac74b3195abf4793f4c373954d3f7feb
   description?: string;
+  pro_key?: string;
 }
 
 interface Project {
   $key?: string;
   title?: string;
   description?: string;
+}
 
+interface User {
+  name?: string;
+  uid?: string;
 }
