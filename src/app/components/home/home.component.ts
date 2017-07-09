@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFire} from 'angularfire2';
 import {FlashMessagesService} from 'angular2-flash-messages';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   login() {

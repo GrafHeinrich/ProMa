@@ -11,20 +11,22 @@ import * as firebase from 'firebase/app';
 })
 export class NavbarComponent implements OnInit {
 
+
   constructor(
     public af:AngularFire,
     public flashMessage:FlashMessagesService,
-    private router: Router
+    private router: Router,
+    
     ) { 
-
+ 
     }
 
   ngOnInit() {
-
   }
 
-  login() {
+  login() {  
     this.af.auth.login();
+
   }
 
   logout() {
