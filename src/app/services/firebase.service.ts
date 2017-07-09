@@ -10,11 +10,13 @@ export class FirebaseService {
    task: FirebaseObjectObservable<any>;
    users: FirebaseListObservable<any[]>;
    user: FirebaseObjectObservable<any>;
+   folder:any;
 
   constructor(private af: AngularFire) {
      this.projects = this.af.database.list('/projects') as FirebaseListObservable<Project[]>
      this.tasks = this.af.database.list('/tasks') as FirebaseListObservable<Task[]>
      this.users = this.af.database.list('/users') as FirebaseListObservable<User[]>
+     this.folder = "project_data";
    }
   
   getTasks(){
@@ -58,6 +60,10 @@ export class FirebaseService {
 
   deleteProject(id) {
     return this.projects.remove(id);
+  }
+
+  addData(project){
+      let storageRef = firebase.storage().ref();
   }
 
 }

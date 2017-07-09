@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FirebaseService} from '../../services/firebase.service';
 import {Router} from'@angular/router';
+import * as firebase from 'firebase/app';
 
 
 @Component({
@@ -11,6 +12,7 @@ import {Router} from'@angular/router';
 export class DashboardComponent implements OnInit {
 
   projects: any;
+  user:any;
 
   constructor(
     private firebaseService:FirebaseService,
@@ -18,7 +20,8 @@ export class DashboardComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    
+    this.user = firebase.auth().currentUser;
+    console.log(this.user.displayName);
      this.firebaseService.getProjects().subscribe(projects => {
       //console.log(projects);
       this.projects = projects;
