@@ -1,10 +1,9 @@
 <h1 *ngIf="user">Welcome {{user.displayName}}</h1>
 <h2 class="page-header"><strong>You are working on the following projects:</strong></h2>
 
-<div class="row">
-  <div *ngFor="let project of projects" class="col-md-6">
-    
-    <div class="panel panel-primary" *ngIf="project.priority=='high'">
+
+  <ng-container *ngFor="let project of projects" class="col-md-6">
+    <div *ngIf="isMember()" class="panel panel-primary" style="width: 49%;float: left;margin-right: 1%">
       <div class="panel-heading">
         <h3 class="panel-title"><a [routerLink]="['/project/'+project.$key]"><strong> {{project.title}} </strong></a></h3>
       </div>
@@ -12,7 +11,7 @@
         {{project.description}}
       </div>
     </div>
-    
-  </div>
 
-</div>
+
+ 
+  </ng-container>
