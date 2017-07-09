@@ -65,12 +65,11 @@ export class FirebaseService {
 interface Task {
   $key?: string;
   title?: string;
-<<<<<<< HEAD
+
   type?: string;
-=======
->>>>>>> e4666b86ac74b3195abf4793f4c373954d3f7feb
+
   description?: string;
-  pro_key?: string;
+
 }
 
 interface Project {
