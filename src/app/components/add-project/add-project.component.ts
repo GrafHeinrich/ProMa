@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 export class AddProjectComponent implements OnInit {
   title: any;
   description: any;
+  priority: any;
 
   constructor(
     private firebaseService:FirebaseService,
@@ -23,6 +24,7 @@ export class AddProjectComponent implements OnInit {
     let project = {
       title: this.title,
       description: this.description,
+      priority: this.priority
     }
 
     this.firebaseService.addProject(project);
