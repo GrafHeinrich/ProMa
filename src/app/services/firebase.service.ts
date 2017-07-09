@@ -63,7 +63,6 @@ interface Task {
   $key?: string;
   title?: string;
   type?: string;
-  pro_key?: string;
   description?: string;
 }
 

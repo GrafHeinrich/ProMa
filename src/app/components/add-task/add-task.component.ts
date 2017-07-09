@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FirebaseService} from '../../services/firebase.service';
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-task',
@@ -11,7 +11,10 @@ export class AddTaskComponent implements OnInit {
   title: any;
   description: any;
   type: any;
-  pro_key: any;
+  project:any;
+  
+  projects:any ;
+ // pro_key: any;
 
   constructor(
     private firebaseService:FirebaseService,
@@ -19,16 +22,22 @@ export class AddTaskComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.firebaseService.getProjects().subscribe(projects => {
+      //console.log(projects);
+      this.projects = projects;
+    });
   }
 
   onAddSubmit() {
+    console.log("test1");
     let task = {
       title: this.title,
       description: this.description,
       type: this.type,
+      project: this.project,
       //pro_key: key,
     }
-
+    console.log("test");
     this.firebaseService.addTask(task);
 
     this.router.navigate(['projects']);

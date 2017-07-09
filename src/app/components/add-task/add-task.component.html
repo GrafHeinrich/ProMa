@@ -1,19 +1,26 @@
 <a [routerLink]="['/projects']">Back</a>
 <br>
-<h2 class="page-header">Edit Project</h2>
+<h2 class="page-header">Add Task</h2>
 
 <form (submit)="onAddSubmit()">
   <div class="form-group">
     <label>Title</label>
-    <input class="form-control" type="text" [(ngModel)]="t_title" name="t_title" required>
+    <input class="form-control" type="text" [(ngModel)]="title" name="title" required>
   </div>
   <div class="form-group">
     <label>Description</label>
-    <input class="form-control" type="text" [(ngModel)]="t_description" name="t_description" required>
+    <input class="form-control" type="text" [(ngModel)]="description" name="description" required>
   </div>
   <div class="form-group">
     <label>Type</label>
-    <input class="form-control" type="text" [(ngModel)]="t_type" name="t_type" required>
+    <input class="form-control" type="text" [(ngModel)]="type" name="type" required>
   </div>
+  <div class="form-group">
+    <label>Project</label>
+    <select class="form-control" type="text" [(ngModel)]="project" name="project" required id="select">
+          <option *ngFor="let project of projects"><a [routerLink]="['/project/'+project.$key]">{{project.title}}</a></option>
+    </select>
+  </div>
+  
   <input type="submit" value="Submit" class="btn btn-success">
 </form>
