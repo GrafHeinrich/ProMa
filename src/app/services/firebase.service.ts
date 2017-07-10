@@ -18,6 +18,39 @@ export class FirebaseService {
      this.users = this.af.database.list('/users') as FirebaseListObservable<User[]>
      this.folder = "project_data";
    }
+
+  addUser(user){
+
+    for (var uid in this.users) {
+      if (this.users.hasOwnProperty(uid)) {
+          if(user.uid == uid) {
+            console.log("Found user and added to database!");
+            return this.users.push(user);
+          }
+          else {
+            console.log("User already in database!");
+          }
+      }
+    }
+
+  }
+
+  getUsers() {
+    return this.users;
+  }
+
+  getUserDetail(id) {
+    this.user = this.af.database.object('/users') as FirebaseObjectObservable<User>
+  }
+
+  updateUser(id, user) {
+    return this.users.update(id, user);
+  }
+
+  deleteUser(id) {
+    return this.users.remove(id);
+  }
+
   
   getTasks(){
     return this.tasks;
@@ -82,6 +115,7 @@ interface Project {
 }
 
 interface User {
+  $key?: string;
   name?: string;
   uid?: string;
 }
