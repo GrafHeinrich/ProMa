@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
     this.counter = 0;
     this.user = firebase.auth().currentUser;
     
-    this.isWorker=false;
+    this.isWorker = false;
     
     console.log(this.user.displayName);
     this.firebaseService.getProjects().subscribe(projects => {
@@ -40,10 +40,10 @@ export class DashboardComponent implements OnInit {
     this.projects = projects;
 
     console.log("Projects length: "+this.projects.length);   
-  });
-  //console.log(this.workers);
-  this.cdr.detectChanges();
-  }
+    });
+    //console.log(this.workers);
+    this.cdr.detectChanges();
+    }
 
   isMember(){
     console.log("Counter S: "+this.counter);

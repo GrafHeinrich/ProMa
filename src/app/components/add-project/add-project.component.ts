@@ -18,6 +18,7 @@ export class AddProjectComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    
   }
 
   onAddSubmit() {
