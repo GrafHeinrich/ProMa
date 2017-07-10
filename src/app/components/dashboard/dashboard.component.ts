@@ -49,7 +49,7 @@ export class DashboardComponent implements OnInit {
 
     //console.log("Projects length: "+this.projects.length);   
     });
-    //console.log(this.workers);
+    console.log(this.workers);
     }
 
   isMember(){
