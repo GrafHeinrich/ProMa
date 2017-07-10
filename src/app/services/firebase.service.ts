@@ -24,11 +24,12 @@ export class FirebaseService {
     for (var uid in this.users) {
       if (this.users.hasOwnProperty(uid)) {
           if(user.uid == uid) {
-            console.log("Found user and added to database!");
-            return this.users.push(user);
+            console.log("User already in database!");
+            
           }
           else {
-            console.log("User already in database!");
+            console.log("Found user and added to database!");
+            return this.users.push(user);
           }
       }
     }
