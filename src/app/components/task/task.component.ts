@@ -11,12 +11,15 @@ export class TaskComponent implements OnInit {
 
   id: any;
   task: any;
+  projects:any;
+  pId:any;
 
   constructor(
     private firebaseService: FirebaseService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {
+   }
 
   ngOnInit() {
     //Get ID
@@ -25,6 +28,11 @@ export class TaskComponent implements OnInit {
     this.firebaseService.getTaskDetails(this.id).subscribe(task => {
     this.task = task;
   });
+
+    this.firebaseService.getProjects().subscribe(projects =>{
+      this.projects = projects;
+    });
+
   
   }
   
@@ -33,6 +41,7 @@ export class TaskComponent implements OnInit {
 
     this.router.navigate(['/dashboard']);
   }
+
 
 
 }
