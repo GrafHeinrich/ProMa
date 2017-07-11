@@ -29,12 +29,10 @@
           <h3 class="panel-title"><a [routerLink]="['/task/'+task.$key]"><strong> {{task.title}} </strong></a>
            <span class="label label-success" *ngIf="task.isDone" style="float: right">&#10004;&nbsp;Done</span>
            <span class="label label-warning" *ngIf="task.isDone==false" style="float: right">&#9998;&nbsp;In progress</span>
-                
-          
           </h3>
         </div>
         <div class="panel-body">
-          <h3><small> {{task.type}}</small></h3>
+          <h3><small>Type: {{task.type}}</small></h3>
           {{task.workers}}
         </div>
       </div>
