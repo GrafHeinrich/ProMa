@@ -26,7 +26,7 @@
 
             <form (submit)="onAddUser()">
             <select class="form-control" id="select" [(ngModel)]="worker" name="priority" >
-                <option *ngFor="let userlist of userlists">{{ userlist.name }}</option>
+                <option *ngFor="let username of usernames">{{ username }}</option>
             </select>
             <input type="submit" value="Assign User" class="btn btn-default">
             <input value="Reassign User" class="btn btn-danger" (click)="deleteUser()">

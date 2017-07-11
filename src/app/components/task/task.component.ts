@@ -12,7 +12,7 @@ export class TaskComponent implements OnInit {
   id: any;
   task: any;
   users: any;
-  userlist: any;
+  usernames: any;
   projects: any;
   project: any;
   worker: any;
@@ -22,8 +22,7 @@ export class TaskComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) { 
-    this.userlist = {
-      name: " ",
+    this.usernames = {
     }
   }
 
@@ -51,11 +50,12 @@ export class TaskComponent implements OnInit {
 
     for(var i = 0; i < this.users.length; i++) {
       if(this.project.workers.includes(this.users[i].name)) {
-        this.userlist += this.users[i].name;
+        this.usernames[i] = {name: this.users[i].name};
       }
     }
+
     console.log(this.project);
-    console.log(this.userlist);
+    console.log(this.usernames);
   }
   
   onDeleteClick() {
