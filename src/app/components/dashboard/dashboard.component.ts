@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FirebaseService} from '../../services/firebase.service';
-import {Router} from'@angular/router';
+import { FirebaseService } from '../../services/firebase.service';
+import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 
 
@@ -16,54 +16,60 @@ export class DashboardComponent implements OnInit {
   workers: any;
   isWorker: any;
 
-  
+
   constructor(
-    private firebaseService:FirebaseService,
-    ) {
-      this.counter = 0;
-     }
+    private firebaseService: FirebaseService,
+  ) {
+    this.counter = 0;
+    this.user ={
+      displayName:"",
+    } 
+    console.log("User"+this.user.displayName);
+  }
 
   ngOnInit() {
-
+    if(firebase.auth().currentUser!==null){
+    this.user = firebase.auth().currentUser;}
     this.counter = 0;
-    this.user = firebase.auth().currentUser;
-    
-    /* if(firebase.auth().currentUser != null) {
-        this.user = firebase.auth().currentUser;
+  /*  if (firebase.auth().currentUser != null) {
+      this.user = firebase.auth().currentUser;
 
-        let nUser = {
-          name: this.user.displayName,
-          uid: this.user.uid,
-        }
+      let nUser = {
+        name: this.user.displayName,
+        uid: this.user.uid,
+      }
 
-        this.firebaseService.addUser(nUser);
-    } */
+      this.firebaseService.addUser(nUser);
+    }*/
 
 
     this.isWorker = false;
-    
+
     //console.log(this.user.displayName);
     this.firebaseService.getProjects().subscribe(projects => {
-    //console.log(projects);
-    this.projects = projects;
+      //console.log(projects);
+      this.projects = projects;
 
-    //console.log("Projects length: "+this.projects.length);   
+      //console.log("Projects length: "+this.projects.length);   
     });
-    console.log(this.workers);
-    }
+    //console.log(this.workers);
+  }
 
-  isMember(){
+  isMember() {
     //console.log("Counter S: "+this.counter);
-    if(this.counter < this.projects.length){
-    //console.log("Counter: "+this.counter);
-      if(this.projects[this.counter].workers.includes(this.user.displayName)){this.isWorker=true;}
-       else{this.isWorker=false;}
-    
+
+   if(this.user!==null){
+    if (this.counter < this.projects.length) {
+      //console.log("Counter: "+this.counter);
+      if (this.projects[this.counter].workers.includes(this.user.displayName)) { this.isWorker = true; }
+      else { this.isWorker = false; }
+
       //console.log("Counter IF: "+this.counter);
       this.counter = this.counter + 1;
       //console.log("Counter Inc: "+this.counter);
-   }
-   if(this.counter>=this.projects.length){this.counter=0;}
+    }}
+
+    if (this.counter >= this.projects.length) { this.counter = 0; }
     return this.isWorker;
   }
 
