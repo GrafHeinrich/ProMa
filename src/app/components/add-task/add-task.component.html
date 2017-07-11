@@ -16,11 +16,16 @@
         </textarea>
       </div>
     </div>
-  <div class="form-group">
+   <div class="form-group">
     <label>Type</label>
-    <input class="form-control" type="text" [(ngModel)]="type" name="type" required>
-
-  </div>
+    <select class="form-control" type="text" [(ngModel)]="type" name="type" required id="select">
+          <option>research</option>
+          <option>programming</option>
+          <option>modelling</option>
+          <option>conception</option>
+          <option>graphics</option>
+    </select>
+    </div>
    <div class="form-group">
     <label>Owner</label>
     <input class="form-control" type="text" [(ngModel)]="owner" name="owner" required>
