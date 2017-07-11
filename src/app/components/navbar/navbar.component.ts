@@ -48,7 +48,7 @@ export class NavbarComponent implements OnInit {
     this.user = firebase.auth().currentUser;
 
     if(!this.sameUid()) {
-      console.log(this.isUid);
+      //console.log(this.isUid);
         let nUser = {
           name: this.user.displayName,
           uid: this.user.uid,
@@ -58,7 +58,7 @@ export class NavbarComponent implements OnInit {
         console.log("Added new User!");
     }
     else {
-      console.log(this.isUid);
+      //console.log(this.isUid);
       console.log("User already in database!");
     }
     }, 6000);
