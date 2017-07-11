@@ -15,6 +15,9 @@ export class AddTaskComponent implements OnInit {
   project:any;
   owner:any;
   projects:any ;
+  priority:any;
+  workers:any;
+  isDone:boolean;
 
   constructor(
     private firebaseService:FirebaseService,
@@ -22,7 +25,7 @@ export class AddTaskComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.owner = firebase.auth().currentUser.displayName;
+    //this.owner = firebase.auth().currentUser.displayName;
     this.firebaseService.getProjects().subscribe(projects => {
       this.projects = projects;
     });
@@ -35,6 +38,9 @@ export class AddTaskComponent implements OnInit {
       type: this.type,
       project: this.project,
       owner: this.owner,
+      priority: this.priority,
+      workers: this.workers,
+      isDone:false,
     }
     this.firebaseService.addTask(task);
 
