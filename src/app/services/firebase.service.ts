@@ -20,28 +20,16 @@ export class FirebaseService {
    }
 
   addUser(user){
-
-    for (var uid in this.users) {
-      if (this.users.hasOwnProperty(uid)) {
-          if(user.uid == uid) {
-            console.log("User already in database!");
-            
-          }
-          else {
-            console.log("Found user and added to database!");
-            return this.users.push(user);
-          }
-      }
-    }
-
+  return this.users.push(user);
   }
 
   getUsers() {
     return this.users;
   }
 
-  getUserDetail(id) {
-    this.user = this.af.database.object('/users') as FirebaseObjectObservable<User>
+  getUserDetails(id) {
+    this.user = this.af.database.object('/users/' + id) as FirebaseObjectObservable<User>
+    return this.user;
   }
 
   updateUser(id, user) {

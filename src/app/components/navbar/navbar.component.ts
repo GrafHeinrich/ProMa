@@ -14,6 +14,9 @@ export class NavbarComponent implements OnInit {
   user: any;
   name: any;
   uid: any;
+  users: any;
+  uids: any;
+  isUid: any;
 
   constructor(
     public af:AngularFire,
@@ -21,32 +24,44 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     private firebaseService:FirebaseService,
     ) { 
- 
+      this.user = {
+        name: "",
+        uid: "",
+      } 
     }
 
   ngOnInit() {
+    if(firebase.auth().currentUser !== null){
+    this.user = firebase.auth().currentUser;
+  }
+    this.isUid = false;
 
+    this.firebaseService.getUsers().subscribe(users => {
+      this.users = users;  
+    });
   }
 
   login() {  
     this.af.auth.login();
 
     setTimeout( auth => {
-    if(firebase.auth().currentUser == null) {
-      console.log("Couldn't find any user!");
-    }
+    this.user = firebase.auth().currentUser;
 
-    if(firebase.auth().currentUser != null) {
-        this.user = firebase.auth().currentUser;
-
+    if(!this.sameUid()) {
+      console.log(this.isUid);
         let nUser = {
           name: this.user.displayName,
           uid: this.user.uid,
         }
 
         this.firebaseService.addUser(nUser);
+        console.log("Added new User!");
     }
-    }, 10000);
+    else {
+      console.log(this.isUid);
+      console.log("User already in database!");
+    }
+    }, 6000);
 
     this.router.navigate(['/']);
   }
@@ -57,6 +72,17 @@ export class NavbarComponent implements OnInit {
     {cssClass: 'alert-success', timeout: 3000});
 
     this.router.navigate(['/']);
+  }
+
+  sameUid() {
+    if(this.user !== null){
+      this.isUid = false;
+      for(var i = 0; i < this.users.length; i++) {
+        if (this.users[i].uid.includes(this.user.uid)) { this.isUid = true; }
+      }
+
+      return this.isUid;
+    }
   }
 
 }

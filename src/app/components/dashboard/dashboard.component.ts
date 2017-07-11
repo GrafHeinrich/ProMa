@@ -24,24 +24,13 @@ export class DashboardComponent implements OnInit {
     this.user ={
       displayName:"",
     } 
-    console.log("User"+this.user.displayName);
+    //console.log("User"+this.user.displayName);
   }
 
   ngOnInit() {
-    if(firebase.auth().currentUser!==null){
+    if(firebase.auth().currentUser !== null){
     this.user = firebase.auth().currentUser;}
     this.counter = 0;
-  /*  if (firebase.auth().currentUser != null) {
-      this.user = firebase.auth().currentUser;
-
-      let nUser = {
-        name: this.user.displayName,
-        uid: this.user.uid,
-      }
-
-      this.firebaseService.addUser(nUser);
-    }*/
-
 
     this.isWorker = false;
 
@@ -58,7 +47,7 @@ export class DashboardComponent implements OnInit {
   isMember() {
     //console.log("Counter S: "+this.counter);
 
-   if(this.user!==null){
+   if(this.user !== null){
     if (this.counter < this.projects.length) {
       //console.log("Counter: "+this.counter);
       if (this.projects[this.counter].workers.includes(this.user.displayName)) { this.isWorker = true; }

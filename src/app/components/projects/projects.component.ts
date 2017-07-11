@@ -14,7 +14,6 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit() {
     this.firebaseService.getProjects().subscribe(projects => {
-      //console.log(projects);
       this.projects = projects;
     });
   }
