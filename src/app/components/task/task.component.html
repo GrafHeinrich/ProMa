@@ -11,7 +11,11 @@
                 <li class="list-group-item"><strong>Project: </strong>{{task.project}}</li> 
                 <li class="list-group-item"><strong>Description: </strong>{{task.description}}</li>
                 <li class="list-group-item"><strong>Type: </strong>{{task.type}}</li>
-                <li class="list-group-item"><strong>Priority: </strong>{{task.priority}}</li>           
+                <li class="list-group-item"><strong>Priority: </strong>{{task.priority}}</li>    
+                <li class="list-group-item"><strong>Task Status: </strong>
+                <span class="label label-success" *ngIf="task.isDone">&#10004;&nbsp;Done</span>
+                <span class="label label-warning" *ngIf="task.isDone==false">&#9998;&nbsp;In progress</span>
+                </li>       
             </ul>
         </div>
         <div class="col-md-4">

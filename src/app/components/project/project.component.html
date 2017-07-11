@@ -27,7 +27,12 @@
 
             <ng-container *ngFor="let task of tasks">
                 <li class="list-group-item" *ngIf="task.project == project.title">
-                    <a [routerLink]="['/task/'+task.$key]">{{task.title}}</a>
+                    <a [routerLink]="['/task/'+task.$key]">{{task.title}}
+                     <span class="label label-success" *ngIf="task.isDone" style="float: right">&#10004;&nbsp;Done</span>
+                     <span class="label label-warning" *ngIf="task.isDone==false" style="float: right">&#9998;&nbsp;In progress</span>
+                
+                    
+                    </a>
                 </li>
             </ng-container>
 

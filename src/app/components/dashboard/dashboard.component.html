@@ -21,4 +21,24 @@
     <a class="btn btn-success col-md-5" [routerLink]="['/add-project']">New Project</a>
   </div>
 
+  <div class="col-md-8">
+  <h2 class=""><strong>You are involved in following tasks:</strong></h2><hr>
+    <ng-container *ngFor="let task of tasks">
+      <div *ngIf="isMemberTask()" class="panel panel-primary" style="width: 49%;float: left;margin-right: 1%">
+        <div class="panel-heading">
+          <h3 class="panel-title"><a [routerLink]="['/task/'+task.$key]"><strong> {{task.title}} </strong></a>
+           <span class="label label-success" *ngIf="task.isDone" style="float: right">&#10004;&nbsp;Done</span>
+           <span class="label label-warning" *ngIf="task.isDone==false" style="float: right">&#9998;&nbsp;In progress</span>
+                
+          
+          </h3>
+        </div>
+        <div class="panel-body">
+          <h3><small> {{task.type}}</small></h3>
+          {{task.workers}}
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
 </div>
