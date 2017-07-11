@@ -17,6 +17,7 @@
                 <span class="label label-warning" *ngIf="task.isDone==false">&#9998;&nbsp;In progress</span>
                 </li>       
             </ul>
+            <div><h4>Workers: {{task.workers}}</h4></div>
         </div>
         <div class="col-md-4">
             <h3><strong>Actions:</strong></h3>
@@ -26,7 +27,7 @@
 
             <form (submit)="onAddUser()">
             <select class="form-control" id="select" [(ngModel)]="worker" name="priority" >
-                <option *ngFor="let username of usernames">{{ username }}</option>
+                <option *ngFor="let user of users">{{user.name}}</option>
             </select>
             <input type="submit" value="Assign User" class="btn btn-default">
             <input value="Reassign User" class="btn btn-danger" (click)="deleteUser()">
