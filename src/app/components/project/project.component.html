@@ -48,7 +48,7 @@
                 <option *ngFor="let user of users">{{user.name}}</option>
             </select>
             <input type="submit" value="Assign User" class="btn btn-default">
-            <input type="submit" value="Reassign User" class="btn btn-danger">
+            <input value="Reassign User" class="btn btn-danger" (click)="deleteUser()">
             </form>
 
             <br>

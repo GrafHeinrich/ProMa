@@ -57,4 +57,19 @@ export class ProjectComponent implements OnInit {
     }
   }
 
+  deleteUser() {
+    if(this.worker != null && this.project.workers.includes(this.worker)) {
+      this.project.workers = this.project.workers.replace(', ' + this.worker,'');
+
+      let project = {
+        title: this.project.title,
+        description: this.project.description,
+        priority: this.project.priority,
+        workers: this.project.workers,
+      }
+
+    this.firebaseService.updateProject(this.id, project);
+    }
+  }
+
 }
