@@ -44,13 +44,13 @@
             <br>
 
             <form (submit)="onAddUser()">
-            <select class="form-control" id="select" [(ngModel)]="worker" name="priority">
+            <select class="form-control" id="select" [(ngModel)]="worker" name="priority" style="width: 70%">
                 <option *ngFor="let user of users">{{user.name}}</option>
             </select>
+            <br>
             <input type="submit" value="Assign User" class="btn btn-default">
             <input type="submit" value="Reassign User" class="btn btn-danger">
             </form>
-
             <br>
             <br>
             <a class="btn btn-success" [routerLink]="['/add-task']">New Task</a>
