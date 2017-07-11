@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <script>
+    // See http://www.backalleycoder.com/2016/05/13/sghpa-the-single-page-app-hack-for-github-pages/
+    (function(){
+      var redirect = sessionStorage.redirect;
+      delete sessionStorage.redirect;
+      if (redirect && redirect != location.href) {
+        history.replaceState(null, null, redirect);
+      }
+    })();
+  //Change 1.1
+  </script>
+  <meta charset="utf-8">
+  <title>Projectmanagement</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://bootswatch.com/cosmo/bootstrap.min.css">
+<link href="styles.01300f76da0487863eae.bundle.css" rel="stylesheet"/></head>
+<body>
+  <app-root>
+    Loading..
+  </app-root>
+<script type="text/javascript" src="inline.cd8271704c7406d1ec5c.bundle.js"></script><script type="text/javascript" src="polyfills.b445e9fc396ea1784811.bundle.js"></script><script type="text/javascript" src="vendor.24015045453f24ec5e94.bundle.js"></script><script type="text/javascript" src="main.c4aa1be45a1b463f9d23.bundle.js"></script></body>
+</html>

@@ -22,5 +22,5 @@ Build by [@Phil96](https://github.com/Phil96) and [@GrafHeinrich](https://github
 
 ## What's to come?
 * Storage connection
-    * aupload files connected to your tasks
+    * upload files connected to your tasks
 * Task-type filter

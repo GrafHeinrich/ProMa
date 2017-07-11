@@ -24,7 +24,7 @@
   <div class="col-md-8">
   <h2 class=""><strong>You are involved in following tasks:</strong></h2><hr>
     <ng-container *ngFor="let task of tasks">
-      <div *ngIf="(isMemberTask()) && (task.priority=='high')" class="panel panel-primary" style="width: 49%;float: left;margin-right: 1%">
+      <div *ngIf="(isMemberTask()) && (task.priority=='high') && (!task.isDone)" class="panel panel-primary" style="width: 49%;float: left;margin-right: 1%">
         <div class="panel-heading">
           <h3 class="panel-title"><a [routerLink]="['/task/'+task.$key]"><strong> {{task.title}} </strong></a>
            <span class="label label-success" *ngIf="task.isDone" style="float: right">&#10004;&nbsp;Done</span>
