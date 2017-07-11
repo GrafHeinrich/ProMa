@@ -40,7 +40,16 @@
         <div class="col-md-4">
             <h3><strong>Actions:</strong></h3>
             <a class="btn btn-default" [routerLink]="['/edit-project/'+project.$key]">Edit Project</a>
-            <a class="btn btn-default">Add User</a>
+            <br>
+            <br>
+
+            <form (submit)="onAddUser()">
+            <select class="form-control" id="select" [(ngModel)]="worker" name="priority">
+                <option *ngFor="let user of users">{{user.name}}</option>
+            </select>
+            <input type="submit" value="Add User" class="btn btn-default">
+            </form>
+
             <br>
             <br>
             <a class="btn btn-success" [routerLink]="['/add-task']">New Task</a>

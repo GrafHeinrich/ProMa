@@ -12,6 +12,8 @@ export class ProjectComponent implements OnInit {
   id: any;
   project: any;
   tasks: any;
+  users: any;
+  worker: any;
 
   constructor(
     private firebaseService: FirebaseService,
@@ -28,8 +30,11 @@ export class ProjectComponent implements OnInit {
   });
   
   this.firebaseService.getTasks().subscribe(tasks => {
-      //console.log(projects);
       this.tasks = tasks;
+    });
+
+    this.firebaseService.getUsers().subscribe(users => {
+      this.users = users;
     });
   }
   
@@ -37,6 +42,17 @@ export class ProjectComponent implements OnInit {
     this.firebaseService.deleteProject(this.id);
 
     this.router.navigate(['/dashboard']);
+  }
+
+  onAddUser() {
+    let project = {
+      title: this.project.title,
+      description: this.project.description,
+      priority: this.project.priority,
+      workers: this.project.workers + ", " + this.worker,
+    }
+
+    this.firebaseService.updateProject(this.id, project);
   }
 
 }
