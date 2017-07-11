@@ -45,6 +45,7 @@ export class ProjectComponent implements OnInit {
   }
 
   onAddUser() {
+    if(this.worker != null && !this.project.workers.includes(this.worker)) {
     let project = {
       title: this.project.title,
       description: this.project.description,
@@ -53,6 +54,7 @@ export class ProjectComponent implements OnInit {
     }
 
     this.firebaseService.updateProject(this.id, project);
+    }
   }
 
 }
