@@ -11,21 +11,30 @@ export class TaskComponent implements OnInit {
 
   id: any;
   task: any;
+  users: any;
+  worker: any;
+
 
   constructor(
     private firebaseService: FirebaseService,
     private router: Router,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute) { 
+
+  }
+
 
   ngOnInit() {
     //Get ID
     this.id = this.route.snapshot.params['id'];
-    
+
     this.firebaseService.getTaskDetails(this.id).subscribe(task => {
-    this.task = task;
-  });
-  
+      this.task = task;
+    });
+
+    this.firebaseService.getUsers().subscribe(users => {
+      this.users = users;
+    });
+
   }
   
   onDeleteClick() {
@@ -34,5 +43,32 @@ export class TaskComponent implements OnInit {
     this.router.navigate(['/dashboard']);
   }
 
+  onAddUser() {
+    if(this.worker != null && !this.task.workers.includes(this.worker)) {
+    let task = {
+      title: this.task.title,
+      description: this.task.description,
+      priority: this.task.priority,
+      workers: this.task.workers + ", " + this.worker,
+    }
+
+    this.firebaseService.updateTask(this.id, task);
+    }
+  }
+
+  deleteUser() {
+    if(this.worker != null && this.task.workers.includes(this.worker)) {
+      this.task.workers = this.task.workers.replace(', ' + this.worker,'');
+
+      let task = {
+        title: this.task.title,
+        description: this.task.description,
+        priority: this.task.priority,
+        workers: this.task.workers,
+      }
+
+    this.firebaseService.updateTask(this.id, task);
+    }
+  }
 
 }

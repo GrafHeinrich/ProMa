@@ -14,6 +14,7 @@ export class EditTaskComponent implements OnInit {
   description;
   type;
   priority;
+  isDone;
 
   constructor(
     private firebaseService:FirebaseService,
@@ -29,6 +30,7 @@ export class EditTaskComponent implements OnInit {
       this.description = task.description;
       this.type = task.type;
       this.priority = task.priority;
+      this.isDone = task.isDone;
     });
   }
 
@@ -37,7 +39,8 @@ export class EditTaskComponent implements OnInit {
       title: this.title,
       description: this.description,
       type: this.type,
-      priority: this.priority
+      priority: this.priority,
+      isDone: this.isDone,
     }
 
     this.firebaseService.updateTask(this.id, task);

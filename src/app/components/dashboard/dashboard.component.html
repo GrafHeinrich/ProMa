@@ -2,17 +2,41 @@
 <h2 class="page-header"><strong>You are working on the following projects:</strong></h2>
 
 <div class="row">
-  <div *ngFor="let project of projects" class="col-md-6">
-    
-    <div class="panel panel-primary" *ngIf="project.priority=='high'">
-      <div class="panel-heading">
-        <h3 class="panel-title"><a [routerLink]="['/project/'+project.$key]"><strong> {{project.title}} </strong></a></h3>
+  <div class="col-md-8">
+    <ng-container *ngFor="let project of projects">
+      <div *ngIf="(isMember())&&(project.priority=='high')" class="panel panel-primary" style="width: 49%;float: left;margin-right: 1%">
+        <div class="panel-heading">
+          <h3 class="panel-title"><a [routerLink]="['/project/'+project.$key]"><strong> {{project.title}} </strong></a></h3>
+        </div>
+        <div class="panel-body">
+          {{project.description}}
+        </div>
       </div>
-      <div class="panel-body">
-        {{project.description}}
+    </ng-container>
+  </div>
+
+  <div class="col-md-4">
+    <h3><strong>Quick Actions:</strong></h3>
+    <a class="btn btn-success col-md-5" [routerLink]="['/add-task']">New Task</a>
+    <a class="btn btn-success col-md-5" [routerLink]="['/add-project']">New Project</a>
+  </div>
+
+  <div class="col-md-8">
+  <h2 class=""><strong>You are involved in following tasks:</strong></h2><hr>
+    <ng-container *ngFor="let task of tasks">
+      <div *ngIf="(isMemberTask()) && (task.priority=='high')" class="panel panel-primary" style="width: 49%;float: left;margin-right: 1%">
+        <div class="panel-heading">
+          <h3 class="panel-title"><a [routerLink]="['/task/'+task.$key]"><strong> {{task.title}} </strong></a>
+           <span class="label label-success" *ngIf="task.isDone" style="float: right">&#10004;&nbsp;Done</span>
+           <span class="label label-warning" *ngIf="task.isDone==false" style="float: right">&#9998;&nbsp;In progress</span>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <h3><small>Type: {{task.type}}</small></h3>
+          {{task.workers}}
+        </div>
       </div>
-    </div>
-    
+    </ng-container>
   </div>
 
 </div>

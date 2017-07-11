@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FirebaseService} from '../../services/firebase.service';
 import {Router} from '@angular/router';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-add-task',
@@ -8,23 +9,24 @@ import {Router} from '@angular/router';
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent implements OnInit {
-  id: any;
-  project: any;
   title: any;
   description: any;
   type: any;
+  project:any;
+  owner:any;
   projects:any ;
-
+  priority:any;
+  workers:any;
+  isDone:boolean;
 
   constructor(
     private firebaseService:FirebaseService,
-    private router:Router,
+    private router:Router
   ) { }
 
   ngOnInit() {
-
+    //this.owner = firebase.auth().currentUser.displayName;
     this.firebaseService.getProjects().subscribe(projects => {
-      //console.log(projects);
       this.projects = projects;
     });
   }
@@ -35,9 +37,11 @@ export class AddTaskComponent implements OnInit {
       description: this.description,
       type: this.type,
       project: this.project,
-
+      owner: this.owner,
+      priority: this.priority,
+      workers: this.workers,
+      isDone:false,
     }
-
     this.firebaseService.addTask(task);
 
     this.router.navigate(['tasks']);

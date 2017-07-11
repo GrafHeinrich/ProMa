@@ -1,7 +1,11 @@
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let task of tasks">
-    <a [routerLink]="['/task/'+task.$key]">{{task.title}}</a>
-  </li>
+  <h2 class="page-header"><strong>Open tasks:</strong></h2>
+  <ng-container *ngFor="let task of tasks">
+  <li class="list-group-item" *ngIf="isTaskMember()">
+      <a [routerLink]="['/task/'+task.$key]" style="width: 80%">{{task.title}}</a>
+      <span style="width: 10%;float: right">Priority: {{task.priority}}</span>
+    </li>
+  </ng-container>
 </ul>
 
 <!--

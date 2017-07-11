@@ -5,7 +5,7 @@
 <form (submit)="onEditSubmit()">
   <div class="form-group">
     <label>Title</label>
-    <input class="form-control" type="text" [(ngModel)]="title" name="title" required>
+    <input class="form-control" type="text" [(ngModel)]="title" name="title" readonly>
   </div>
   <!-- <div class="form-group">
     <label>Description</label>
@@ -20,8 +20,14 @@
     </div>
   <div class="form-group">
     <label>Type</label>
-    <input class="form-control" type="text" [(ngModel)]="type" name="type" required>
-  </div>
+    <select class="form-control" type="text" [(ngModel)]="type" name="type" required id="select">
+          <option>research</option>
+          <option>programming</option>
+          <option>modelling</option>
+          <option>conception</option>
+          <option>graphics</option>
+    </select>
+    </div>
   <div class="form-group">
     <label>Priority</label>
     <select class="form-control" type="text" [(ngModel)]="priority" name="priority" required id="select">
@@ -30,6 +36,10 @@
           <option>low</option>
           <option>irrelevant</option>
     </select>
+  </div>
+  <div class="form-group">
+    <label>Task done ?</label><br>
+    <input type="checkbox" [(ngModel)]="isDone" name="isDone">
   </div>
   <input type="submit" value="Submit" class="btn btn-success">
 </form>

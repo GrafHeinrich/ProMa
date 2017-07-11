@@ -18,6 +18,28 @@ export class FirebaseService {
      this.users = this.af.database.list('/users') as FirebaseListObservable<User[]>
      this.folder = "project_data";
    }
+
+  addUser(user){
+  return this.users.push(user);
+  }
+
+  getUsers() {
+    return this.users;
+  }
+
+  getUserDetails(id) {
+    this.user = this.af.database.object('/users/' + id) as FirebaseObjectObservable<User>
+    return this.user;
+  }
+
+  updateUser(id, user) {
+    return this.users.update(id, user);
+  }
+
+  deleteUser(id) {
+    return this.users.remove(id);
+  }
+
   
   getTasks(){
     return this.tasks;
@@ -71,11 +93,8 @@ export class FirebaseService {
 interface Task {
   $key?: string;
   title?: string;
-
   type?: string;
-
   description?: string;
-
 }
 
 interface Project {
@@ -85,6 +104,7 @@ interface Project {
 }
 
 interface User {
+  $key?: string;
   name?: string;
   uid?: string;
 }

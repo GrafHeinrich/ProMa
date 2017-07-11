@@ -15,6 +15,7 @@
     </div>
         <h2><small>{{project.description}}</small></h2>
     <br>
+<div><h4>Workers: {{project.workers}}</h4></div>
     <div class="row">
         <div class="col-md-8">
             <ul class="list-group">
@@ -26,21 +27,28 @@
 
             <ng-container *ngFor="let task of tasks">
                 <li class="list-group-item" *ngIf="task.project == project.title">
-                    <a [routerLink]="['/task/'+task.$key]">{{task.title}}</a>
+                    <a [routerLink]="['/task/'+task.$key]">{{task.title}}
+                     <span class="label label-success" *ngIf="task.isDone" style="float: right">&#10004;&nbsp;Done</span>
+                     <span class="label label-warning" *ngIf="task.isDone==false" style="float: right">&#9998;&nbsp;In progress</span>
+                
+                    
+                    </a>
                 </li>
             </ng-container>
 
         </div>
         <div class="col-md-4">
             <h3><strong>Actions:</strong></h3>
-            <a class="btn btn-default" [routerLink]="['/edit-project/'+project.$key]">Edit Project</a>
-            <a class="btn btn-default">Add User</a>
-            <br>
-            <br>
-            <a class="btn btn-success" [routerLink]="['/add-task']">New Task</a>
-            <br>
-            <br>
-            <a (click)="onDeleteClick()" class="btn btn-danger">Delete Project</a>
+            <a class="btn btn-default col-md-5" [routerLink]="['/edit-project/'+project.$key]">Edit Project</a>
+            <a class="btn btn-success col-md-5" [routerLink]="['/add-task']">New Task</a>
+            <form (submit)="onAddUser()">
+            <select class="form-control col-md-5" id="select" [(ngModel)]="worker" name="priority" style="width: 85%">
+                <option class="col-md-5" *ngFor="let user of users">{{user.name}}</option>
+            </select>
+            <input type="submit" value="Add User" class="btn btn-default col-md-5">
+            <input value="Delete User" class="btn btn-danger col-md-5" (click)="deleteUser()">
+            </form>
+            <a (click)="onDeleteClick()" class="btn btn-danger col-md-5 botButton">Delete Project</a>
         </div>
     </div>
 </div>

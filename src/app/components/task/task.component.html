@@ -1,26 +1,57 @@
 <div *ngIf="task">
     <a [routerLink]="['/project']">Go Back</a>
     <br>
-    <h2 class="page-header"><strong>{{task.title}}</strong></h2>
+
+    <div class="row">
+        <div class="col-md-8">
+            <br>
+            <h2><strong>{{task.title}}</strong></h2>
+            
+        </div>
+        <div class="col-md-2">
+            <br>
+            <div class="well" style="margin-bottom: 0px;">
+                <strong> Priority: {{task.priority}} </strong>
+                <div>
+                <span class="label label-success" *ngIf="task.isDone">&#10004;&nbsp;Done</span>
+                <span class="label label-warning" *ngIf="task.isDone==false">&#9998;&nbsp;In progress</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <h2><small>{{task.description}}</small></h2>
     <br>
     <div class="row">
         <div class="col-md-8">
             <ul class="list-group">
-                <li class="list-group-item"><strong>Title: </strong>{{task.title}}</li> 
-                <li class="list-group-item"><strong>Project: </strong>{{task.project}}</li> 
-                <li class="list-group-item"><strong>Description: </strong>{{task.description}}</li>
-                <li class="list-group-item"><strong>Type: </strong>{{task.type}}</li>
-                <li class="list-group-item"><strong>Priority: </strong>{{task.priority}}</li>           
+                <li class="list-group-item"><strong class="mytable">Title: </strong>{{task.title}}</li> 
+                <li class="list-group-item"><strong class="mytable">Project: </strong>{{task.project}}</li> 
+                <li class="list-group-item"><strong class="mytable">Description: </strong>{{task.description}}</li>
+                <li class="list-group-item"><strong class="mytable">Type: </strong>{{task.type}}</li>
+                <li class="list-group-item"><strong class="mytable">Priority: </strong>{{task.priority}}</li>    
+                <li class="list-group-item"><strong class="mytable">Workers: </strong>{{task.workers}}</li>        
             </ul>
         </div>
         <div class="col-md-4">
             <h3><strong>Actions:</strong></h3>
-            <a class="btn btn-default" [routerLink]="['/edit-task/'+task.$key]">Edit Task</a>
-            <a class="btn btn-default">Add User</a>
+            <a class="btn btn-default col-md-5" [routerLink]="['/edit-task/'+task.$key]">Edit Task</a>
             <br>
             <br>
-            <a (click)="onDeleteClick()" class="btn btn-danger">Delete Task</a>
+
+            <div class="">
+            <form (submit)="onAddUser()">
+            <select class="form-control col-md-5" id="select" [(ngModel)]="worker" name="priority" style="width: 85%">
+                <option *ngFor="let user of users">{{user.name}}</option>
+            </select>
+
+            <input type="submit" value="Add User" class="btn btn-default col-md-5">
+            <input value="Delete User" class="btn btn-danger col-md-5" (click)="deleteUser()">
+            </form>
+            </div>
+
+            <br>
+            <a (click)="onDeleteClick()" class="btn btn-danger col-md-5">Delete Task</a>
         </div>
     </div>
 </div>

@@ -12,6 +12,7 @@ export class EditProjectComponent implements OnInit {
   title;
   description;
   priority;
+  workers;
 
   constructor(
     private firebaseService:FirebaseService,
@@ -26,6 +27,7 @@ export class EditProjectComponent implements OnInit {
       this.title = project.title;
       this.description = project.description;
       this.priority = project.priority;
+      this.workers = project.workers;
     });
   }
 
@@ -33,7 +35,8 @@ export class EditProjectComponent implements OnInit {
     let project = {
       title: this.title,
       description: this.description,
-      priority: this.priority
+      priority: this.priority,
+      workers: this.workers,
     }
 
     this.firebaseService.updateProject(this.id, project);

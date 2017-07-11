@@ -14,7 +14,7 @@
         <li><a [routerLink]="['/']">Home</a></li>
         <li *ngIf="(af.auth | async)"><a [routerLink]="['/dashboard']">Dashboard</a></li>
         <li *ngIf="(af.auth | async)"><a [routerLink]="['/projects']">Projects</a></li>
-        <!-- <li *ngIf="(af.auth | async)"><a [routerLink]="['/tasks']">All Tasks</a></li> -->
+        <li *ngIf="(af.auth | async)"><a [routerLink]="['/tasks']">Tasks</a></li>
         <li *ngIf="(af.auth | async)"><a [routerLink]="['/add-project']">New Project</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

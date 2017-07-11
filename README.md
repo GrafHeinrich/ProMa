@@ -17,7 +17,10 @@ Build by [@Phil96](https://github.com/Phil96) and [@GrafHeinrich](https://github
     * give tasks a type
 * :white_check_mark: `Editing` an existing task
 * :white_check_mark: `Deleting` an existing task
+* :white_check_mark: `Adding` Users to your Project and
+    * assign them to projects and tasks
 
 ## What's to come?
-* Adding Users to your Project and
-    * assign them to projects and tasks
+* Storage connection
+    * aupload files connected to your tasks
+* Task-type filter
