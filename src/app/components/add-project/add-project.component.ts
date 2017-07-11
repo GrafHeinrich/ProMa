@@ -27,7 +27,7 @@ export class AddProjectComponent implements OnInit {
 
   ngOnInit() {
 
-       this.firebaseService.getUsers().subscribe(users => {
+    this.firebaseService.getUsers().subscribe(users => {
       this.users = users;
     });
 
