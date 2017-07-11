@@ -21,7 +21,17 @@
         <div class="col-md-4">
             <h3><strong>Actions:</strong></h3>
             <a class="btn btn-default" [routerLink]="['/edit-task/'+task.$key]">Edit Task</a>
-            <a class="btn btn-default">Add User</a>
+            <br>
+            <br>
+
+            <form (submit)="onAddUser()">
+            <select class="form-control" id="select" [(ngModel)]="worker" name="priority" >
+                <option *ngFor="let userlist of userlists">{{ userlist.name }}</option>
+            </select>
+            <input type="submit" value="Assign User" class="btn btn-default">
+            <input value="Reassign User" class="btn btn-danger" (click)="deleteUser()">
+            </form>
+
             <br>
             <br>
             <a (click)="onDeleteClick()" class="btn btn-danger">Delete Task</a>
