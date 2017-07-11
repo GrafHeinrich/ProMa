@@ -34,7 +34,7 @@ export class AddProjectComponent implements OnInit {
      if (firebase.auth().currentUser !== null) {
       this.user = firebase.auth().currentUser.displayName;
     }
-    console.log("Hallo "+ this.user)
+    //console.log("Hallo "+ this.user)
   }
 
   onAddSubmit() {

@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
       this.user = firebase.auth().currentUser;
     }
     this.counter = 0;
-    console.log("User " + this.user.displayName);
+    //console.log("User " + this.user.displayName);
 
 
     this.isWorker = false;
