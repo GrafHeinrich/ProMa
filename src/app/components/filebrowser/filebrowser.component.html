@@ -1,0 +1,12 @@
+  <h2>Upload a File</h2>
+  <form ngNoForm>
+    <input id="file" name="file" type="file" >
+    <button (click)="upload()" type="button">Upload</button>
+    </form>
+    <h2>File Gallery</h2>
+    <div>
+        <div *ngFor="let file of imageList">
+            <a [href]="file.downloadURL" >{{file.filename}}</a>
+            <button (click)="delete(file)" style="position:absolute;top:2px;right:2px;">[x]</button>
+        </div>
+    </div>

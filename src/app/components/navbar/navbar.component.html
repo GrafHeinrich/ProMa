@@ -21,6 +21,9 @@
         <li *ngIf="!(af.auth | async)"><a (click)="login()">Login</a></li>
         <li *ngIf="(af.auth | async)"><a (click)="logout()">Logout</a></li>
       </ul>
+         <ul *ngIf="user" class="nav navbar-nav navbar-right">
+        <li *ngIf="(af.auth | async)"><label style="padding: 15px 15px;position: relative;line-height: 21px;">{{user.displayName}}</label></li>
+      </ul>
     </div>
   </div>
 </nav>

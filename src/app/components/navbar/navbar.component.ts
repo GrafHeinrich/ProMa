@@ -12,6 +12,7 @@ import * as firebase from 'firebase/app';
 })
 export class NavbarComponent implements OnInit {
   user: any;
+  userN: any;
   name: any;
   uid: any;
   users: any;
@@ -25,8 +26,8 @@ export class NavbarComponent implements OnInit {
     private firebaseService:FirebaseService,
     ) { 
       this.user = {
-        name: "",
-        uid: "",
+        displayName:"",
+        uid:"",
       } 
     }
 
@@ -53,7 +54,7 @@ export class NavbarComponent implements OnInit {
           name: this.user.displayName,
           uid: this.user.uid,
         }
-
+        this.user.name = nUser.name;
         this.firebaseService.addUser(nUser);
         console.log("Added new User!");
     }
@@ -61,7 +62,7 @@ export class NavbarComponent implements OnInit {
       //console.log(this.isUid);
       console.log("User already in database!");
     }
-    }, 6000);
+    }, 3000);
 
     this.router.navigate(['/']);
   }

@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+
+import { AngularFire, AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable, FirebaseApp } from 'angularfire2';
 import * as firebase from 'firebase';
+import 'firebase/storage'
+
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class FirebaseService {
@@ -10,13 +14,35 @@ export class FirebaseService {
    task: FirebaseObjectObservable<any>;
    users: FirebaseListObservable<any[]>;
    user: FirebaseObjectObservable<any>;
+
+   fileList: FirebaseListObservable<any[]>;
+   files: Observable<any[]>;
    folder:any;
 
-  constructor(private af: AngularFire) {
+  constructor(private af: AngularFire, fb:AngularFireDatabase ) {
      this.projects = this.af.database.list('/projects') as FirebaseListObservable<Project[]>
      this.tasks = this.af.database.list('/tasks') as FirebaseListObservable<Task[]>
      this.users = this.af.database.list('/users') as FirebaseListObservable<User[]>
-     this.folder = "project_data";
+     this.folder = "project_storObj";
+     this.fileList = this.af.database.list(`/${this.folder}`)
+   }
+
+   addStoreObj(project){
+    let storageRef = firebase.storage().ref();
+    for(let selectedFile of[(<HTMLInputElement>document.getElementById('uploadData')).files[0]]){
+      let path = '/${this.foler}/${selectedFile.name}';
+      let iRef = storageRef.child(path);
+      iRef.put(selectedFile).then((snapshot) =>{
+        project.storeOb = selectedFile.name;
+        project.path = path; 
+        return this.projects.push(project);
+      });
+    }
+   }
+
+
+   getFiles(){
+     return this.fileList;
    }
 
   addUser(user){
@@ -73,11 +99,44 @@ export class FirebaseService {
   }
 
   addProject(project) {
-    return this.projects.push(project);
+    let result = null;
+    let storageRef = firebase.storage().ref();
+    for(let selectedFile of[(<HTMLInputElement>document.getElementById('uploadData')).files[0]]){
+      let path = `/${this.folder}/${selectedFile.name}`;
+      let iRef = storageRef.child(path);
+      iRef.put(selectedFile).then((snapshot) =>{
+        project.storeOb = selectedFile.name;
+        let that = this;
+        iRef.getDownloadURL().then(url =>{
+          project.path = url;
+          return result = that.projects.push(project);
+        })
+        //return this.projects.push(project);
+      });
+    }
+
+    return result;
   }
 
   updateProject(id, project) {
-    return this.projects.update(id, project);
+    let result = null;
+    let storageRef = firebase.storage().ref();
+    for(let selectedFile of[(<HTMLInputElement>document.getElementById('uploadData')).files[0]]){
+      let path = `/${this.folder}/${selectedFile.name}`;
+      let iRef = storageRef.child(path);
+      iRef.put(selectedFile).then((snapshot) =>{
+        project.storeOb = selectedFile.name;
+        let that = this;
+        iRef.getDownloadURL().then(url =>{
+          project.path = url;
+          return result = that.projects.update(id,project);
+        })
+        //return this.projects.push(project);
+      });
+    }
+
+    return result;
+    //return this.projects.update(id, project);
   }
 
   deleteProject(id) {

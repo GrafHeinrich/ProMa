@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FirebaseService} from '../../services/firebase.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-project',
@@ -14,6 +15,9 @@ export class ProjectComponent implements OnInit {
   tasks: any;
   users: any;
   worker: any;
+  obj_url:any;
+  url:any;
+
 
   constructor(
     private firebaseService: FirebaseService,
@@ -27,6 +31,12 @@ export class ProjectComponent implements OnInit {
     
     this.firebaseService.getProjectDetails(this.id).subscribe(project => {
     this.project = project;
+   /* let storageRef = firebase.storage().ref();
+    let spaceRef = storageRef.child(project.path);
+    console.log(this.project.path);
+    storageRef.child(project.path).getDownloadURL().then(url =>{
+      this.obj_url = url;
+    }).catch((error) => {console.log("error")})*/
   });
   
   this.firebaseService.getTasks().subscribe(tasks => {
@@ -35,7 +45,10 @@ export class ProjectComponent implements OnInit {
 
     this.firebaseService.getUsers().subscribe(users => {
       this.users = users;
+      
     });
+
+
   }
   
   onDeleteClick() {

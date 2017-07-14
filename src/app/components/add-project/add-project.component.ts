@@ -14,6 +14,7 @@ export class AddProjectComponent implements OnInit {
   priority: any;
   user:any;
   users:any;
+  path:any;
 
   constructor(
     private firebaseService:FirebaseService,
@@ -23,6 +24,7 @@ export class AddProjectComponent implements OnInit {
     this.user = {
       displayName: "",
     }
+    this.path ="";
   }
 
   ngOnInit() {
@@ -43,6 +45,7 @@ export class AddProjectComponent implements OnInit {
       description: this.description,
       priority: this.priority,
       workers: this.user,
+      path:this.path,
     }
 
     this.firebaseService.addProject(project);
